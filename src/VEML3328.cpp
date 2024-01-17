@@ -29,6 +29,7 @@ SOFTWARE.
 #include <math.h>
 #endif
 #include "VEML3328.h"
+#include <Arduino.h>
 
 
 VEML3328::VEML3328(void) {
@@ -227,3 +228,5 @@ void VEML3328::setIntegrationTime(uint16_t IT) {
 
   setConfiguration(CommandReg);
 }
+
+VEML3328 colorsensor;
