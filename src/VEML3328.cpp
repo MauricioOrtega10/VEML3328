@@ -35,6 +35,21 @@ VEML3328::VEML3328(void) {
   
 }
 
+void VEML3328::defaultBegin(void)
+{
+  if(!VEML3328::begin()) {                                   //chekc if the sensor is connected 
+    Serial.println("ERROR: couldn't detect the sensor"); //display an error message if the sensor is not connected
+    while(1){}            
+  }
+  Serial.println("Vishay VEML3328 RGBCIR color sensor");
+  Enable();                    //enable the sensor channels
+  setGain(4);                  //set the amplification gain to 4 (0.5,1,2 can also be selected)
+  setSensitivity(high_sens);   //set the sensitivity mode (low_sens can also be selected) 
+  setDG(4);                    //set the digital gain (1,2 can also be selected)
+  setIntegrationTime(IT_50MS); //set the sensor's integration time or the time it takes to take one measurement (IT_100MS, IT_200MS, IT_400MS can also be selected)
+  delay(500);
+}
+
 bool VEML3328::begin(void) {
   bool sensorExists;
   Wire.begin();
@@ -51,7 +66,7 @@ void VEML3328::setConfiguration(uint16_t configuration) {
   bytes[1]= (configuration >> 8) & 255;
   Wire.beginTransmission(VEML3328_I2C_ADDRESS);  
   Wire.write(COMMAND_CODE_CONF); 
-  Wire.write(bytes,2);
+  Wire.write(reinterpret_cast<uint8_t*>(bytes),2);
   Wire.write(0);
   Wire.endTransmission(); 
   lastConfiguration = configuration;

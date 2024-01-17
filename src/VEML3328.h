@@ -93,6 +93,7 @@ class VEML3328 {
 	
   public:
 	VEML3328(void);
+	void defaultBegin(void);
 	bool begin(void);
 	void Enable(void);
 	void Disable(void);
@@ -107,5 +108,7 @@ class VEML3328 {
 	void setIntegrationTime(uint16_t);
 	uint16_t getCommandReg(void);
 };
+
+extern VEML3328 colorsensor;
 
 #endif
