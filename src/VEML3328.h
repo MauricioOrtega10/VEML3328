@@ -25,9 +25,8 @@ SOFTWARE.
 #ifndef VEML3328_H
 #define VEML3328_H
 
-// VEML3328 I2C ADDRESS
+#include <SensorColorConfig.h>
 
-#define VEML3328_I2C_ADDRESS   0x10
 
 // REGISTER CONF (00H) SETTINGS
 
