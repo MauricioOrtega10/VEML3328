@@ -36,7 +36,7 @@ VEML3328::VEML3328(void) {
   
 }
 
-void VEML3328::Begin(void)
+void VEML3328::begin(void)
 {
   if(!VEML3328::defaultBegin()) {                                   //chekc if the sensor is connected 
     Serial.println("Failed to initialize Sensor Color."); //display an error message if the sensor is not connected
