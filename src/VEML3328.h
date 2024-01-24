@@ -92,8 +92,8 @@ class VEML3328 {
 	
   public:
 	VEML3328(void);
-	void defaultBegin(void);
-	bool begin(void);
+	void Begin(void);
+	bool defaultBegin(void);
 	void Enable(void);
 	void Disable(void);
 	uint16_t getRed(void);

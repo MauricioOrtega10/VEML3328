@@ -36,9 +36,9 @@ VEML3328::VEML3328(void) {
   
 }
 
-void VEML3328::defaultBegin(void)
+void VEML3328::Begin(void)
 {
-  if(!VEML3328::begin()) {                                   //chekc if the sensor is connected 
+  if(!VEML3328::defaultBegin()) {                                   //chekc if the sensor is connected 
     Serial.println("Failed to initialize Sensor Color."); //display an error message if the sensor is not connected
     while(1){}            
   }
@@ -51,7 +51,7 @@ void VEML3328::defaultBegin(void)
   delay(500);
 }
 
-bool VEML3328::begin(void) {
+bool VEML3328::defaultBegin(void) {
   bool sensorExists;
   Wire.begin();
   Wire.beginTransmission(VEML3328_I2C_ADDRESS);
