@@ -39,10 +39,10 @@ VEML3328::VEML3328(void) {
 void VEML3328::defaultBegin(void)
 {
   if(!VEML3328::begin()) {                                   //chekc if the sensor is connected 
-    Serial.println("ERROR: couldn't detect the sensor"); //display an error message if the sensor is not connected
+    Serial.println("Failed to initialize Sensor Color."); //display an error message if the sensor is not connected
     while(1){}            
   }
-  Serial.println("Vishay VEML3328 RGBCIR color sensor");
+  Serial.println("Sensor Color initialized.");
   Enable();                    //enable the sensor channels
   setGain(4);                  //set the amplification gain to 4 (0.5,1,2 can also be selected)
   setSensitivity(high_sens);   //set the sensitivity mode (low_sens can also be selected) 
