@@ -92,7 +92,7 @@ class VEML3328 {
 	
   public:
 	VEML3328(void);
-	void begin(void);
+	bool begin(void);
 	bool defaultBegin(void);
 	void Enable(void);
 	void Disable(void);

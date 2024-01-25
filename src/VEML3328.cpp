@@ -36,19 +36,19 @@ VEML3328::VEML3328(void) {
   
 }
 
-void VEML3328::begin(void)
+bool VEML3328::begin(void)
 {
-  if(!VEML3328::defaultBegin()) {                                   //chekc if the sensor is connected 
-    Serial.println("Failed to initialize Sensor Color."); //display an error message if the sensor is not connected
-    while(1){}            
+  if(!VEML3328::defaultBegin()) 
+  {                                   //chekc if the sensor is connected 
+    return false;             
   }
-  Serial.println("Sensor Color initialized.");
   Enable();                    //enable the sensor channels
   setGain(4);                  //set the amplification gain to 4 (0.5,1,2 can also be selected)
   setSensitivity(high_sens);   //set the sensitivity mode (low_sens can also be selected) 
   setDG(4);                    //set the digital gain (1,2 can also be selected)
   setIntegrationTime(IT_50MS); //set the sensor's integration time or the time it takes to take one measurement (IT_100MS, IT_200MS, IT_400MS can also be selected)
   delay(500);
+  return true;
 }
 
 bool VEML3328::defaultBegin(void) {
